@@ -1,0 +1,271 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicita que te llamemos</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background: #faf6f1;
+
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: #4e3526;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .sub {
+            color: #777;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+
+            margin-top: 18px;
+            margin-bottom: 7px;
+
+            font-weight: bold;
+            color: #3b2a20;
+        }
+
+        input,
+        textarea {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+
+            outline: none;
+
+            border-color: #6f4e37;
+        }
+
+        button {
+
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #25D366;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+
+            background: #1ebe5d;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="card">
+
+        <h1>
+            ¿A QUIÉN QUIERES QUE LLAMEMOS?
+        </h1>
+
+        <p class="sub">
+            Déjanos los datos y cuéntanos a quién y para qué quieres que llamemos.
+        </p>
+
+
+        <form id="formulario">
+
+            <label>
+                ¿A quién quieres que llamemos?
+            </label>
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Nombre de la persona"
+                required
+            >
+
+
+            <label>
+                Número de celular
+            </label>
+
+            <input
+                type="tel"
+                id="telefono"
+                placeholder="Ej: 69985654"
+                required
+            >
+
+
+            <label>
+                ¿Para qué quieres que le llamemos?
+            </label>
+
+            <textarea
+                id="motivo"
+                placeholder="Cuéntanos brevemente el motivo..."
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                💬 ENVIAR POR WHATSAPP
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+        // ======================================
+        // TU NÚMERO DE WHATSAPP
+        // ======================================
+
+        const miNumero = "59169985654";
+
+
+        // ======================================
+        // FORMULARIO
+        // ======================================
+
+        const formulario =
+            document.getElementById("formulario");
+
+
+        formulario.addEventListener("submit", function(event) {
+
+            // Evitar que la página se recargue
+            event.preventDefault();
+
+
+            // ==================================
+            // OBTENER DATOS
+            // ==================================
+
+            const nombre =
+                document.getElementById("nombre").value;
+
+            const telefono =
+                document.getElementById("telefono").value;
+
+            const motivo =
+                document.getElementById("motivo").value;
+
+
+            // ==================================
+            // CREAR MENSAJE
+            // ==================================
+
+            const mensaje =
+
+                "📞 NUEVA SOLICITUD DE LLAMADA\n\n" +
+
+                "👤 Persona: " + nombre + "\n" +
+
+                "📱 Número: " + telefono + "\n" +
+
+                "📝 Motivo: " + motivo;
+
+
+            // ==================================
+            // PREPARAR MENSAJE
+            // ==================================
+
+            const mensajeCodificado =
+                encodeURIComponent(mensaje);
+
+
+            // ==================================
+            // ENLACE DE WHATSAPP
+            // ==================================
+
+            const enlace =
+
+                "https://wa.me/" +
+                miNumero +
+                "?text=" +
+                mensajeCodificado;
+
+
+            // ==================================
+            // ABRIR WHATSAPP
+            // ==================================
+
+            window.location.href = enlace;
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+```
